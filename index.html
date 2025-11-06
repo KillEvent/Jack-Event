@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Notre histoire – Kill Event</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Kill Event : l’art d’orchestrer des énigmes qui dérapent avec élégance. Découvrez l’histoire de notre maître de jeu, Jack Event, et la naissance de nos Murder Party.">
+  <style>
+    :root{
+      --bg:#0b0b0b;          /* noir profond */
+      --panel:#121212;       /* surface */
+      --text:#ffffff;
+      --muted:#bcbcbc;
+      --gold:#d4af37;        /* or */
+      --red:#da4f40;         /* rouge Kill Event */
+      --red-dark:#b5382d;
+      --border:#242424;
+      --radius:18px;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      line-height:1.55;
+    }
+    a{ color:var(--gold); text-decoration:none }
+    a:hover{ text-decoration:underline }
+
+    /* Wrappers */
+    .wrap{ max-width:1100px; margin:0 auto; padding: 0 clamp(16px,3vw,28px); }
+
+    /* HERO */
+    .hero{
+      position:relative; overflow:hidden;
+      padding: clamp(48px,10vw,120px) 0 clamp(30px,6vw,60px);
+      background:
+        radial-gradient(1200px 400px at 20% -10%, rgba(212,175,55,.10), transparent 70%),
+        radial-gradient(800px 300px at 85% 110%, rgba(218,79,64,.10), transparent 70%);
+      border-bottom:1px solid var(--border);
+    }
+    .hero__inner{
+      display:grid; gap:28px; align-items:center;
+      grid-template-columns: 1.1fr .9fr;
+    }
+    @media (max-width: 900px){ .hero__inner{ grid-template-columns:1fr; } }
+
+    .logo{
+      width: 180px; height:auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,.6));
+      margin-bottom: 10px;
+    }
+    .eyebrow{
+      text-transform:uppercase; letter-spacing:.14em; color:var(--gold); opacity:.95; font-size:.9rem;
+    }
+    h1{
+      font-family:"Playfair Display", Georgia, serif;
+      font-weight:800;
+      font-size: clamp(32px,5.2vw,60px);
+      line-height:1.1; margin:.2rem 0 .6rem;
+    }
+    .lead{ color:var(--muted); font-size: clamp(16px,2vw,18px); max-width:52ch }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px }
+    .btn{
+      display:inline-block; padding:12px 22px; border-radius:999px; font-weight:800; cursor:pointer;
+      border:1px solid transparent; color:#fff;
+      background: linear-gradient(180deg,var(--red),var(--red-dark));
+      box-shadow:0 12px 24px rgba(218,79,64,.28);
+    }
+    .btn.alt{ background:transparent; border-color:var(--gold); color:var(--gold) }
+    .mascotte-hero{
+      justify-self:end; position:relative; transform: translateY(6px);
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.55));
+      max-width:460px; width:100%;
+    }
+    @media (max-width: 900px){ .mascotte-hero{ justify-self:center; max-width:360px } }
+
+    /* SECTION PANELS */
+    .panel{
+      background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(18px,3.5vw,28px);
+    }
+    section{ padding: clamp(28px,6vw,56px) 0 }
+
+    .split{ display:grid; gap:24px; grid-template-columns: 1.05fr .95fr; align-items:center }
+    @media (max-width: 960px){ .split{ grid-template-columns:1fr } }
+
+    .h2{
+      font-family:"Playfair Display", Georgia, serif; font-size: clamp(24px,3.6vw,36px); margin:.2rem 0 .6rem;
+    }
+    .em{ color:var(--gold) }
+
+    /* AVATAR CARD */
+    .card{
+      display:grid; gap:14px; grid-template-columns: 96px 1fr; align-items:center;
+      background:#0f0f0f; border:1px solid var(--border); border-radius:16px; padding:14px 16px;
+    }
+    .avatar{ width:96px; height:96px; border-radius:50%; object-fit:cover; border:2px solid var(--gold) }
+
+    /* TIMELINE */
+    .timeline{ position:relative; padding-left:22px }
+    .timeline::before{
+      content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--gold),transparent);
+      opacity:.7;
+    }
+    .tl-item{ position:relative; margin:14px 0; }
+    .tl-item::before{
+      content:""; position:absolute; left:-2px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--gold);
+      box-shadow:0 0 0 4px rgba(212,175,55,.12);
+    }
+    .mute{ color:var(--muted) }
+
+    /* EASTER EGG BUTTON */
+    .egg{
+      display:inline-flex; align-items:center; gap:10px; margin-top:8px;
+      padding:10px 14px; border-radius:12px;
+      background:#0f0f0f; border:1px dashed var(--gold); color:var(--gold); cursor:pointer;
+    }
+    .hidden{ display:none }
+
+    /* QUOTE */
+    .quote{
+      font-family:"Playfair Display", Georgia, serif;
+      font-size: clamp(18px,3vw,26px);
+      text-align:center; max-width: 50ch; margin: 0 auto;
+      color:#f1f1f1;
+    }
+    .hr{ height:1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 26px 0 }
+
+    /* FOOT CTA */
+    .footcta{
+      text-align:center;
+      background:
+        radial-gradient(900px 260px at 50% 0%, rgba(212,175,55,.10), transparent 70%),
+        radial-gradient(700px 220px at 40% 120%, rgba(218,79,64,.10), transparent 70%);
+      border-top:1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero__inner">
+      <div>
+        <img class="logo" src="https://cdn.shopify.com/s/files/1/0726/0690/8753/files/kill_event_google_db75b104-5605-44cb-862c-9b2d1d5261a0.png?v=1730289271" alt="Kill Event – Logo">
+        <div class="eyebrow">Notre histoire</div>
+        <h1>Le crime parfait n’existe pas.<br>Seulement des **soirées** qui s’en approchent.</h1>
+        <p class="lead">
+          Kill Event est né d’une petite obsession : faire basculer une soirée ordinaire dans une intrigue extraordinaire.
+          Derrière le rideau, un maître de jeu au sourire trop tranquille — <span class="em">Jack Event</span>.
+          Il a un don : transformer les indices en frissons, et les invités en suspects.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="/collections/all">Plonger dans nos scénarios</a>
+          <a class="btn alt" href="/pages/contact">Contacter Jack Event</a>
+        </div>
+      </div>
+      <img class="mascotte-hero" src="https://cdn.shopify.com/s/files/1/0726/0690/8753/files/mascotte_fond_transparent-min.png?v=1760630439" alt="Mascotte Kill Event – Jack Event">
+    </div>
+  </header>
+
+  <!-- ORIGINS -->
+  <section>
+    <div class="wrap split">
+      <div class="panel">
+        <div class="eyebrow">Origines</div>
+        <h2 class="h2">Tout a commencé par une question : <span class="em">et si…</span></h2>
+        <p>
+          Et si l’on pouvait offrir à nos invités autre chose qu’une fête — un <em>rôle</em> ? Et si l’on troquait les
+          banalités contre des secrets, les selfies contre des preuves, la timidité contre des alibis ?
+        </p>
+        <p>
+          Nous avons écrit des personnages imparfaits, tissé des liens, caché des indices là où personne ne regarde.
+          Puis nous avons laissé la soirée faire le reste. La première bascule a été immédiate : les regards,
+          les silences, les alliances… L’ordinaire venait d’exploser.
+        </p>
+        <div class="card" style="margin-top:10px">
+          <img class="avatar" src="https://cdn.shopify.com/s/files/1/0726/0690/8753/files/Mascotte_de_Murder_Party_2411f2c0-3080-42d7-89ff-28275e0266ab.png?v=1760341787" alt="Jack Event – avatar">
+          <div>
+            <strong>Jack Event</strong><br>
+            <span class="mute">Maître de cérémonie & gardien des secrets</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="eyebrow">Manifeste</div>
+        <h2 class="h2">Ce que nous promettons (et ce que nous ne promettons pas)</h2>
+        <ul>
+          <li>Nous promettons des <strong>histoires</strong> qui tiennent debout et des personnages qui tiennent tête.</li>
+          <li>Nous promettons des <strong>indices</strong> malins, un rythme qui monte, et un final qu’on n’oublie pas.</li>
+          <li>Nous ne promettons pas que vos amis resteront innocents. Ni vous.</li>
+        </ul>
+        <div class="hr"></div>
+        <div class="timeline">
+          <div class="tl-item"><strong>1920 → Vegas</strong> : les croupiers trichent. Pas tous. Enfin…</div>
+          <div class="tl-item"><strong>Minuit</strong> : quelqu’un porte un toast, quelqu’un s’effondre.</div>
+          <div class="tl-item"><strong>Quelque part en Transylvanie</strong> : on compte les ombres. Il en manque une.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section>
+    <div class="wrap">
+      <p class="quote">« On venait pour jouer. On est reparti avec une histoire. »</p>
+    </div>
+  </section>
+
+  <!-- HOW WE CRAFT -->
+  <section>
+    <div class="wrap split">
+      <div class="panel">
+        <div class="eyebrow">Notre méthode</div>
+        <h2 class="h2">Chaque détail compte. Surtout ceux que vous ne verrez pas.</h2>
+        <p>
+          Nos kits sont pensés comme des machines élégantes : <strong>rôles courts</strong> mais intenses, <strong>indices
+          clairs</strong> mais piégeux, <strong>mécaniques fluides</strong> qui laissent place à l’impro. Nous écrivons en
+          couches — pour que les joueurs mènent l’enquête, mais aussi pour qu’ils s’<em>incarnent</em>.
+        </p>
+        <p class="mute">Règle d’or : personne n’est laissé au bord de la piste. Tout le monde a quelque chose à cacher.</p>
+        <button class="egg" id="eggBtn">🔒 Indice dissimulé</button>
+        <p id="eggTxt" class="hidden mute">Cherchez l’As de Pique dans nos pages. Là où il apparaît, une porte s’ouvre…</p>
+      </div>
+
+      <div class="panel">
+        <div class="eyebrow">Ce que vous vivez</div>
+        <h2 class="h2">Un rituel moderne : rire, soupçonner, voter… puis recommencer.</h2>
+        <p>
+          Vous recevez les invitations, distribuez les identités, lancez la bande-son. Ensuite, laissez faire :
+          alliances, trahisons, aveux. On rit beaucoup. On accuse à voix basse. On jure d’être innocent.
+          Personne ne l’est complètement.
+        </p>
+        <p>
+          À la fin, on refait l’histoire autour d’un verre. Et vous savez quoi ? C’est souvent là que l’on réserve
+          la prochaine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOT CTA -->
+  <section class="footcta">
+    <div class="wrap">
+      <h2 class="h2" style="text-align:center">Prêt à écrire le prochain chapitre ?</h2>
+      <p class="mute" style="text-align:center; max-width:60ch; margin:6px auto 14px">
+        Choisissez un univers, préparez la scène, laissez Jack Event faire le reste.
+      </p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn" href="/collections/all">Découvrir nos Murder Party</a>
+        <a class="btn alt" href="/pages/contact">Demander une date</a>
+      </div>
+      <p class="mute" style="text-align:center; margin-top:12px">TVA non applicable, art. 293B du CGI</p>
+    </div>
+  </section>
+
+  <script>
+    // petit easter egg
+    document.getElementById('eggBtn').addEventListener('click', ()=>{
+      document.getElementById('eggTxt').classList.toggle('hidden');
+    });
+
+    // accent **...** dans le H1 (simple markdown-like)
+    document.querySelectorAll('h1, .h2').forEach(h=>{
+      h.innerHTML = h.innerHTML.replace(/\*\*(.+?)\*\*/g,'<span class="em">$1</span>');
+    });
+  </script>
+</body>
+</html>
